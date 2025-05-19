@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='index.css'>
+</head>
+<body>
+    <h1>ToDo List</h1>
+    
+    <div class="task-form">
+        <h2>Создать новую задачу</h2>
+        <div class="form-group">
+            <label for="name">Название:</label>
+            <input type="text" id="name" placeholder="Например: Важная задача!2 !before 20.12.2024">
+            <small>Можно указать приоритет (!1-!4) и дедлайн (!before ДД.ММ.ГГГГ)</small>
+        </div>
+        <div class="form-group">
+            <label for="description">Описание:</label>
+            <textarea id="description" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="priority">Приоритет:</label>
+            <select id="priority">
+                <option value="">-- Выберите приоритет --</option>
+                <option value="CRITICAL">Критический</option>
+                <option value="HIGH">Высокий</option>
+                <option value="MEDIUM">Средний</option>
+                <option value="LOW">Низкий</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="deadline">Дедлайн:</label>
+            <input type="date" id="deadline">
+        </div>
+        <button onclick="createTask()">Создать задачу</button>
+    </div>
+
+    <div class="task-list">
+        <h2>Список задач</h2>
+        <div class="filters">
+            <label>Статус:
+                <select id="status-filter">
+                    <option value="">Все</option>
+                    <option value="ACTIVE">Активные</option>
+                    <option value="COMPLETED">Завершенные</option>
+                    <option value="LATE">Завершенные с опозданием</option>
+                    <option value="OVERDUE">Просроченные</option>
+                </select>
+            </label>
+            <label>Приоритет:
+                <select id="priority-filter">
+                    <option value="">Все</option>
+                    <option value="CRITICAL">Критический</option>
+                    <option value="HIGH">Высокий</option>
+                    <option value="MEDIUM">Средний</option>
+                    <option value="LOW">Низкий</option>
+                </select>
+            </label>
+            <label>Сортировка:
+                <select id="sort-order">
+                    <option value="newest">Сначала новые</option>
+                    <option value="oldest">Сначала старые</option>
+                </select>
+            </label>
+            <button onclick="loadTasks()">Применить фильтры</button>
+        </div>
+        <div id="tasks-container"></div>
+    </div>
+    <div id="edit-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Редактировать задачу</h2>
+        <div class="form-group">
+            <label for="edit-name">Название:</label>
+            <input type="text" id="edit-name">
+        </div>
+        <div class="form-group">
+            <label for="edit-description">Описание:</label>
+            <textarea id="edit-description" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="edit-priority">Приоритет:</label>
+            <select id="edit-priority">
+                <option value="CRITICAL">Критический</option>
+                <option value="HIGH">Высокий</option>
+                <option value="MEDIUM">Средний</option>
+                <option value="LOW">Низкий</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="edit-deadline">Дедлайн:</label>
+            <input type="date" id="edit-deadline">
+        </div>
+        <button onclick="saveEditedTask()">Сохранить</button>
+    </div>
+</div>
+<script src='index.js'></script>
+</body>
+</html>
