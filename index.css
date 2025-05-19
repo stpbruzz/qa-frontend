@@ -100,6 +100,9 @@ button:hover {
 .delete-btn {
     background-color: #f44336;
 }
+.delete-btn:hover {
+    background-color: #dc3c31;
+}
 .task-item.deadline-close {
     border-left: 4px solid #FFA500;
     background-color: #FFF3E0;
